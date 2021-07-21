@@ -1,0 +1,22 @@
+stages:
+- name: build
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: arussel-feedback-wfe:v1.0.${CICD_EXECUTION_SEQUENCE}
+      pushRemote: true
+      registry: docker.atriarch.systems
+    env:
+      PLUGIN_MTU: "1400"
+- name: Deploy
+  steps:
+  - applyYamlConfig:
+      path: ./arussel-feedback-wfe.yaml
+timeout: 15
+notification:
+  recipients:
+  - recipient: pipelineNotifications@mail.atriarch.systems
+    notifier: c-56lvs:n-45qs9
+  condition:
+  - Failed
