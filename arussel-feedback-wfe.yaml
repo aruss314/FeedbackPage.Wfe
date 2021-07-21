@@ -1,0 +1,77 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: arussel-feedback-wfe
+  namespace: arussel-poc
+  labels:
+    app: arussel-feedback-wfe
+spec:
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 80
+  selector:
+    app: arussel-feedback-wfe
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: arussel-feedback-wfe
+  namespace: arussel-poc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: arussel-feedback-wfe
+  template:
+    metadata:
+      labels:
+        app: arussel-feedback-wfe
+    spec:
+      containers:
+      - image: ${CICD_IMAGE}:v1.0.${CICD_EXECUTION_SEQUENCE}
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+        name: arussel-feedback-wfe
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: atriarch-systems-docker-group
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: arussel-feedback-wfe
+  namespace: arussel-poc
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: arussel-feedback-wfe
+  minReplicas: 1
+  maxReplicas: 4
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      targetAverageUtilization: 60
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: arussel-feedback-wfe
+  namespace: arussel-poc
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - host: arussel-feedback-wfe.atriarch.systems
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: arussel-feedback-wfe
+          servicePort: http
