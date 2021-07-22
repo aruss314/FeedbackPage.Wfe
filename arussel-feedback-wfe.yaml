@@ -39,7 +39,7 @@ spec:
         ports:
         - containerPort: 80
       imagePullSecrets:
-      - name: atriarch-systems-docker-group
+      - name: aruss-pipeline-registry
 ---
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
