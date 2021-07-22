@@ -12,7 +12,7 @@ export function JobsApi () {
 
 async function GetJobs(jobsRequest, access_token){
     try{
-        var url = new URL(DatalakeAccessBaseUrl)
+        var url = new URL("https://aruss-feedback-api.atriarch.systems/")
         var preppedParams = [];
 
         // We have to do this becasue we're passing data via querystring instead of a post
