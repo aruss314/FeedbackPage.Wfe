@@ -68,7 +68,7 @@ metadata:
     kubernetes.io/ingress.class: nginx
 spec:
   rules:
-  - host: arussel-feedback-wfe.atriarch.systems
+  - host: aruss-feedback-wfe.atriarch.systems
     http:
       paths:
       - path: /
