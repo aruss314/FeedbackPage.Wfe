@@ -70,7 +70,7 @@ export default function MainContainer(){
 }
 
 function getFormattedWeather(weather){
-    const formattedWeather = weather.map((i,x) => {
+    const formattedWeather = weather.map((i,x) => {return(
         <div id={x}>
             <Row>
                 <Col>
@@ -99,7 +99,7 @@ function getFormattedWeather(weather){
                 </Col>
             </Row>
         </div>
-    });
+    )});
     return(formattedWeather);
 }
 
