@@ -1,28 +1,26 @@
 import {URL, URLSearchParams } from "url"
 
-export function JobsApi () {
-    return ({
-        GetJobs,
+export const JobsApi = {
+        GetWeather,
         PostJobs,
         GetJobByJobId,
         DeleteJobByJobId,
         PatchJobByJobId
-    });
 }
 
-async function GetJobs(jobsRequest, access_token){
+async function GetWeather(jobsRequest, access_token){
     try{
-        var url = new URL("https://aruss-feedback-api.atriarch.systems/")
-        var preppedParams = [];
+        var url = "https://aruss-feedback-api.atriarch.systems"+"/WeatherForecast";
+        // var preppedParams = [];
 
-        // We have to do this becasue we're passing data via querystring instead of a post
-        Object.keys(jobsRequest).forEach(key => 
-            preppedParams.push([key,''+jobsRequest[key]])
-        );
+        // // We have to do this becasue we're passing data via querystring instead of a post
+        // Object.keys(jobsRequest).forEach(key => 
+        //     preppedParams.push([key,''+jobsRequest[key]])
+        // );
 
-        url.search = new URLSearchParams(preppedParams).toString();
+        // url.search = new URLSearchParams(preppedParams).toString();
 
-        const response = await fetch(url.toString(), {
+        const response = await fetch(url, {
         method: 'GET',
         headers: {
             Accept: 'application/json',
