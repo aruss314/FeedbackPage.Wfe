@@ -18,9 +18,10 @@ export default function MainContainer(){
         const {success, data} = await JobsApi.GetWeather();
         if(success && data){
             setWeather(data);
+            toast.success('Refreshed weather data.');
             return;
         }
-        alert("failed");
+        toast.error('Error getting weather data.');
     }
 
     return (
