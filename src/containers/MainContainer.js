@@ -299,9 +299,10 @@ export default function MainContainer(){
         const {success, data} = await JobsApi.GetWeather();
         if(success && data){
             setWeather(data);
+            toast.success('Refreshed weather data.');
             return;
         }
-        alert("failed");
+        toast.error('Error getting weather data.');
     }
 
     return (
@@ -374,7 +375,7 @@ export default function MainContainer(){
 }
 
 function getFormattedWeather(weather){
-    const formattedWeather = weather.map((i,x) => {
+    const formattedWeather = weather.map((i,x) => {return(
         <div id={x}>
             <Row>
                 <Col>
@@ -383,9 +384,6 @@ function getFormattedWeather(weather){
                     </h2>
                 </Col>
             </Row>
-
-           <br />Hello, World
-
             <Row>
                 <Col>
                     <h3>
@@ -406,7 +404,7 @@ function getFormattedWeather(weather){
                 </Col>
             </Row>
         </div>
-    });
+    )});
     return(formattedWeather);
 }
 
