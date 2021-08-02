@@ -344,8 +344,8 @@ export default function MainContainer(){
 
                 </Col>
             </Row>
-            {/**/ <Row>
-                <Col xs={{span:12}} sm={{ span: 6}}>
+             <Row>
+                {/* <Col xs={{span:12}} sm={{ span: 6}}>
                     <a
                     className="App-link"
                     href="https://reactjs.org"
@@ -354,7 +354,7 @@ export default function MainContainer(){
                     >
                     Learn React
                     </a>
-                </Col>
+                </Col> */}
                 <Col xs={{span:12}} sm={{ span: 6}}>
                 <Button
                 variant="primary"
@@ -364,7 +364,7 @@ export default function MainContainer(){
                     {getFormattedWeather(weather)}
                 </Col>
 
-            </Row> }
+            </Row> 
             {/* <Row>
                 <Col>
                     <GetDefaultContent />
