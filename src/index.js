@@ -9,6 +9,9 @@ import 'react-toastify/dist/ReactToastify.css';
 ReactDOM.render(
   <React.StrictMode>
     <App />
+
+   {/* <ShoppingList /> */}
+
   </React.StrictMode>,
   document.getElementById('root')
 );
