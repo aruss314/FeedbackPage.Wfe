@@ -1,11 +1,7 @@
 import {URL, URLSearchParams } from "url"
 
-export const JobsApi = {
+export const WeatherApi = {
         GetWeather,
-        PostJobs,
-        GetJobByJobId,
-        DeleteJobByJobId,
-        PatchJobByJobId
 }
 
 async function GetWeather(jobsRequest, access_token){
