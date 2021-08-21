@@ -15,6 +15,8 @@ import DisplayWinHistory from '../components/DisplayWinHistoryComponent';
 
 import TicTacToe3x3Component from '../components/TicTacToe3x3Component';
 
+import Chess from '../components/ChessComponent';
+
 import PostPlayerScore from '../components/PostPlayerScoreComponent';
 
 import { DadJokeApi } from '../apis/DadJokeApi';
@@ -89,6 +91,12 @@ export default function MainContainer() {
             <Row>
                 <Col>
                     <img src={logo} className="App-logo" alt="logo" />
+                </Col>
+            </Row>
+
+            <Row>
+                <Col>
+                    <Chess />
                 </Col>
             </Row>
 
