@@ -14,10 +14,12 @@ import RecentVictories from '../components/RecentVictoriesComponent';
 import DisplayWinHistory from '../components/DisplayWinHistoryComponent';
 
 import TicTacToe3x3Component from '../components/TicTacToe3x3Component';
+import TestingComponent from '../components/TestingComponent'
 
 import Chess from '../components/ChessComponent';
 
 import PostPlayerScore from '../components/PostPlayerScoreComponent';
+import DeletePWinHistoryRecordByID from '../components/DeleteWinHistoryRecordComponent';
 
 import { DadJokeApi } from '../apis/DadJokeApi';
 
@@ -92,6 +94,21 @@ export default function MainContainer() {
                 <Col>
                     <img src={logo} className="App-logo" alt="logo" />
                 </Col>
+            </Row>
+
+            <Row>
+                <Col>
+                  <TestingComponent />
+                </Col>
+            </Row>
+
+            <Row>
+                <Col>
+                    <DeletePWinHistoryRecordByID />
+                </Col>
+                {/* { <Col> */}
+                       {/* <DisplayWinHistory />  */}
+                {/* </Col> }  */}
             </Row>
 
             <Row>
