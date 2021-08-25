@@ -105,6 +105,16 @@ export default function MainContainer() {
             <Row>
                 <Col>
                     <DeletePWinHistoryRecordByID />
+                </Col>    
+            </Row>
+            <Row>
+                <Col xs={{ span: 12 }} style={{display:'flex', justifyContent:'center'}}>
+                    <Button onClick={getDadJoke}>
+                        Click here to get Dad Joke
+                    </Button>
+                </Col>
+                <Col xs={{ span: 12 }} style={{display:'flex', justifyContent:'center'}}>
+                    <p>{dadJoke}</p>
                 </Col>
                 {/* { <Col> */}
                        {/* <DisplayWinHistory />  */}

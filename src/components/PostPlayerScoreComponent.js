@@ -9,8 +9,6 @@ import Col from 'react-bootstrap/Col';
 
 import { WinHistoryApi } from '../apis/WinHistoryApi';
 
-
-
 import { toast } from 'react-toastify';
 import { IsConstructor } from 'es-abstract';
 import DisplayWinHistory from './DisplayWinHistoryComponent';
@@ -55,7 +53,7 @@ export default function PostPlayerNameAndScore() {
                     <p>Input a Player's Name  </p>
                     <InputGroup className="mb-3">
                         <FormControl
-                            value = {`${playerName}`}
+                            value={`${playerName}`}
                             onChange={onNameChange}
                             placeholder="Player's Name"
                             aria-label="Recipient's username"
