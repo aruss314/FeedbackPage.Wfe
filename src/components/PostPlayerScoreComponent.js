@@ -20,8 +20,17 @@ export default function PostPlayerNameAndScore() {
     const [playerScore, setPlayerScore] = React.useState(0);
 
     async function onClick() {
-        // const { success, data } = await WinHistoryApi.GetRecentVictoriesByPlayerName({ playerName, count: 5 });     if (success && data) {         toast.success('Refreshed Post Player Name and Score data.');         return;     }
-        toast.error('Error getting Post Player Name and Score data.');
+
+        const { success, errors } = await WinHistoryApi.PostPlayerNameAndPlayerScore({ playerName, playerScore });
+
+        if (success) {
+            toast.success("Successfully saved player's score.");
+            setPlayerScore(0);
+            setPlayerName("");
+            return;
+        }
+
+        toast.error(`Error getting Post Player Name and Score data. errors: ${errors}`);
 
     }
 
@@ -31,9 +40,9 @@ export default function PostPlayerNameAndScore() {
 
     async function onScoreChange(e) {
         const value = Number.parseInt(e.target.value)
-         if (Number.isInteger(value)){
-                 setPlayerScore(value);
-         }
+        if (Number.isInteger(value)) {
+            setPlayerScore(value);
+        }
     }
 
     return (
@@ -44,6 +53,7 @@ export default function PostPlayerNameAndScore() {
                     <p>Input a Player's Name  </p>
                     <InputGroup className="mb-3">
                         <FormControl
+                            value={`${playerName}`}
                             onChange={onNameChange}
                             placeholder="Player's Name"
                             aria-label="Recipient's username"
@@ -55,10 +65,10 @@ export default function PostPlayerNameAndScore() {
                 <Col xs={{ span: 12 }}>
                     <p>Input This Player's Score as a String:  </p>
                     <InputGroup className="mb-3">
-                        <FormControl 
-                            value={`${playerScore}`}  
+                        <FormControl
+                            value={`${playerScore}`}
                             onChange={onScoreChange}
-                            
+
                             aria-label="Recipient's username"
                             aria-describedby="basic-addon2"
                         />
