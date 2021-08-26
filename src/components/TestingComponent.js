@@ -2,6 +2,8 @@
 import { Button } from 'bootstrap';
 import React from 'react'
 
+import { toast } from 'react-toastify';
+
 function Square({ onClick: onSquareClick, value }) {
   return (
     <button className="square" onClick={onSquareClick} >
@@ -87,7 +89,8 @@ class TestingComponent extends React.Component {
     'R', 'Q', 'K', 'R']
 
   resetTheBoard = () => {
-    alert('board reset');
+   // alert('board reset');
+   toast.success("This is where'd I'd reset the board, if I had one.");
     this.setState({
       squares: this.defaultBoard
     });
