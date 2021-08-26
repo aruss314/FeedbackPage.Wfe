@@ -26,7 +26,7 @@ class Board extends React.Component {
     const status = 'Next player: X';
 
     return (
-      <div>
+      <>
         <div className="status">{status}</div>
         <div className="board-row">
           {this.renderSquare(0)}
@@ -52,7 +52,7 @@ class Board extends React.Component {
           {this.renderSquare(14)}
           {this.renderSquare(15)}
         </div>
-      </div>
+      </>
     );
   }
 }
@@ -90,7 +90,7 @@ class TestingComponent extends React.Component {
 
   resetTheBoard = () => {
    // alert('board reset');
-   toast.success("This is where'd I'd reset the board, if I had one.");
+   toast.success("The board has been reset.");
     this.setState({
       squares: this.defaultBoard
     });
@@ -98,7 +98,7 @@ class TestingComponent extends React.Component {
 
   handleClick=(i) => {
     const squares = this.state.squares.slice();
-    squares[i] = 'x';
+    squares[i] = ' ';
     this.setState({ squares: squares });
   }
 
