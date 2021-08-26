@@ -116,7 +116,8 @@ async function PostPlayerNameAndPlayerScore({ playerName, playerScore }) {
 
 async function DeleteWinHistoryRecordById({ winHistoryRecordId }) {
         try {
-                var url = apiBaseUrl + `/DeleteWinHistoryRecordById`;
+                var url = apiBaseUrl + `/DeleteWinHistoryRecordById?id=${winHistoryRecordId}`;
+                //var url = apiBaseUrl + `/GetWinHistoryRecordById?id=${id}`;
 
                 const response = await fetch(url, {
                         method: 'DELETE',
@@ -124,11 +125,7 @@ async function DeleteWinHistoryRecordById({ winHistoryRecordId }) {
                                 Accept: 'application/json',
                                 'Content-Type': 'application/json',
                                 //'Authorization' : 'Bearer '+ access_token
-                        },
-                        body: JSON.stringify({
-                                winHistoryRecordId
-                                /* Future Andy's problem: the { property: property } thing can be reduced to just {property} if ( property names are same) */
-                        })
+                        }
                 });
                 if (response.ok === false) {
                         throw (new Error(`ERROR MESSAGE HERE: response.ok was ${response.ok}`));
